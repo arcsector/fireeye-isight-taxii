@@ -1,0 +1,7 @@
+basic\_search\_endpoint module
+==============================
+
+.. automodule:: basic_search_endpoint
+   :members:
+   :undoc-members:
+   :show-inheritance:

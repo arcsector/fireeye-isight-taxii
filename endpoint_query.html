@@ -1,0 +1,361 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>endpoint_query module &mdash; FireEye iSight TAXII Connector 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home" alt="Documentation Home"> FireEye iSight TAXII Connector
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">endpoint_query module</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">FireEye iSight TAXII Connector</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>endpoint_query module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/endpoint_query.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-endpoint_query">
+<span id="endpoint-query-module"></span><h1>endpoint_query module<a class="headerlink" href="#module-endpoint_query" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt id="endpoint_query.APIRequestHandler">
+<em class="property">class </em><code class="sig-prename descclassname">endpoint_query.</code><code class="sig-name descname">APIRequestHandler</code><a class="headerlink" href="#endpoint_query.APIRequestHandler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Standard class to call FireEye REST API</p>
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.getIocs">
+<code class="sig-name descname">getIocs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">startDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 9, 21, 17, 44, 31, 904540)</span></em>, <em class="sig-param"><span class="n">endDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 9, 28, 17, 44, 31, 904540)</span></em>, <em class="sig-param"><span class="n">accept_header</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'application/json'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.getIocs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets IoCs in a timerange from FireEye iSight API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>datetime</strong> (<em>endDate</em>) – Start time. Defaults to <code class="docutils literal notranslate"><span class="pre">datetime.now()-timedelta(days=7)</span></code>.</p></li>
+<li><p><strong>datetime</strong> – End time. Defaults to <code class="docutils literal notranslate"><span class="pre">datetime.now()</span></code>.</p></li>
+<li><p><strong>str</strong> (<em>accept_header</em>) – Mimetype return format. Defaults to ‘application/json’.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Depending on <code class="docutils literal notranslate"><span class="pre">accept_header</span></code>, returns either dictionary json data or request response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>dict OR <code class="xref py py-class docutils literal notranslate"><span class="pre">request.Response</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.getReport">
+<code class="sig-name descname">getReport</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">reportId</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">accept_header</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'application/stix'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.getReport" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets report endpoint for IoCs</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>reportId</strong> (<em>str</em>) – ID of report</p></li>
+<li><p><strong>accept_header</strong> (<em>str</em>) – header to accept different datatypes returned. Defaults to “application/stix”.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Report request response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="docutils literal notranslate"><span class="pre">requests.Response</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.init">
+<code class="sig-name descname">init</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">URL</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">public_key</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">private_key</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">accept_version</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">logger</span><span class="p">:</span> <span class="n">logging.Logger</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">session</span><span class="p">:</span> <span class="n">requests.sessions.Session</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.init" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes class with optional attributes</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>URL</strong> (<em>str</em>) – URL for FireEye iSight. Defaults to ‘<a class="reference external" href="https://api.isightpartners.com">https://api.isightpartners.com</a>’</p></li>
+<li><p><strong>public_key</strong> (<em>str</em>) – Public API Key. Defaults to ‘’</p></li>
+<li><p><strong>private_key</strong> (<em>str</em>) – Private API Key. Defaults to ‘’</p></li>
+<li><p><strong>accept_version</strong> (<em>str</em>) – FireEye iSight version. Defaults to ‘2.5’</p></li>
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – Logger object. Defaults to logging.getLogger(__name__)</p></li>
+<li><p><strong>session</strong> (<em>requests.Session</em>) – Requests session. Defaults to requests.Session()</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.prepare_headers">
+<code class="sig-name descname">prepare_headers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">endpoint</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">accept</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.prepare_headers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Attaches headers to handler session</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>endpoint</strong> (<em>str</em>) – endpoint to hit for hashing</p></li>
+<li><p><strong>accept</strong> (<em>str</em>) – content type to get for acceptance</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.returnHelper">
+<code class="sig-name descname">returnHelper</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span><span class="p">:</span> <span class="n">requests.models.Response</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.returnHelper" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.taxiiPush">
+<code class="sig-name descname">taxiiPush</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.taxiiPush" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes taxii data to a taxii server</p>
+<p><code class="docutils literal notranslate"><span class="pre">jwt_auth_url</span></code> is required for JWT based authentication. If
+it is not specified but <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code> are provided,
+client will configure Basic authentication.</p>
+<p>SSL authentication can be combined with JWT and Basic
+authentication.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ca_cert</strong> (<em>str</em>) – a path to CA SSL certificate file</p></li>
+<li><p><strong>cert_file</strong> (<em>str</em>) – a path to SSL certificate file</p></li>
+<li><p><strong>key_file</strong> (<em>str</em>) – a path to SSL key file</p></li>
+<li><p><strong>username</strong> (<em>str</em>) – username, used in basic auth or JWT auth</p></li>
+<li><p><strong>password</strong> (<em>str</em>) – password, used in basic auth or JWT auth</p></li>
+<li><p><strong>key_password</strong> (<em>str</em>) – same argument as in
+<code class="docutils literal notranslate"><span class="pre">ssl.SSLContext.load_cert_chain</span></code> - may be a function to call
+to get the password for decrypting the private key or
+string/bytes/bytearray. It will only be called if the private
+key is encrypted and a password is necessary.</p></li>
+<li><p><strong>jwt_auth_url</strong> (<em>str</em>) – URL used to obtain JWT token</p></li>
+<li><p><strong>verify_ssl</strong> (<em>bool/str</em>) – set to False to skip checking host’s SSL
+certificate. Set to True to check certificate against public CAs or
+set to filepath to check against custom CA bundle.</p></li>
+<li><p><strong>content</strong> (<em>str</em>) – content to push</p></li>
+<li><p><strong>content_binding</strong> (string or
+<code class="xref py py-class docutils literal notranslate"><span class="pre">cabby.entities.ContentBinding</span></code>) – content binding for a content</p></li>
+<li><p><strong>collection_names</strong> (<em>list</em>) – destination collection names</p></li>
+<li><p><strong>timestamp</strong> (<em>datetime</em>) – timestamp label of the content block
+(current UTC time by default)</p></li>
+<li><p><strong>uri</strong> (<em>str</em>) – URI path to a specific Inbox Service</p></li>
+</ul>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>ValueError</strong> – if URI provided is invalid or schema is not supported</p></li>
+<li><p><strong>cabby.exceptions.HTTPError</strong> – if HTTP error happened</p></li>
+<li><p><strong>cabby.exceptions.UnsuccessfulStatusError</strong> – if Status Message received and status_type is not <cite>SUCCESS</cite></p></li>
+<li><p><strong>cabby.exceptions.ServiceNotFoundError</strong> – if no service found</p></li>
+<li><p><strong>cabby.exceptions.AmbiguousServicesError</strong> – more than one service with type specified</p></li>
+<li><p><strong>cabby.exceptions.NoURIProvidedError</strong> – no URI provided and client can’t discover services</p></li>
+</ul>
+</dd>
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>STIX object from python-stix</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p><code class="docutils literal notranslate"><span class="pre">stix.core.stix_package.STIXPackage</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="endpoint_query.APIRequestHandler.uploadFile">
+<code class="sig-name descname">uploadFile</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">filename</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">FILE</span><span class="p">:</span> <span class="n">_io.StringIO</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.uploadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Upload file to search list</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>filename</strong> (<em>str</em>) – Name of the file you’re uploading</p></li>
+<li><p><strong>FILE</strong> (<em>StringIO</em>) – File-like object</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Return the response</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">request.Response</span></code>:</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, arcsector
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

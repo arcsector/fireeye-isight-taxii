@@ -1,0 +1,272 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Welcome to FireEye iSight TAXII Connector’s documentation! &mdash; FireEye iSight TAXII Connector 0.1 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+  
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home" alt="Documentation Home"> FireEye iSight TAXII Connector
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to FireEye iSight TAXII Connector’s documentation!</a><ul>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#how-to-use">How to Use</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</div>
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">FireEye iSight TAXII Connector</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Welcome to FireEye iSight TAXII Connector’s documentation!</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="welcome-to-fireeye-isight-taxii-connector-s-documentation">
+<h1>Welcome to FireEye iSight TAXII Connector’s documentation!<a class="headerlink" href="#welcome-to-fireeye-isight-taxii-connector-s-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This is an implementation of the FireEye iSight API connector with added TAXII connectors for facilitaion with TAXII v1.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>Install requirements with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3 -m pip install cabby stix
+
+<span class="c1">### OR ###</span>
+
+python3 -m pip install -r requirements.txt
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-use">
+<h2>How to Use<a class="headerlink" href="#how-to-use" title="Permalink to this headline">¶</a></h2>
+<p>Simply import the file, create a class instance, initialize it, and then you’re good to go:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timedelta</span><span class="p">,</span> <span class="n">timezone</span>
+<span class="kn">from</span> <span class="nn">endpoint_query</span> <span class="kn">import</span> <span class="n">APIRequestHandler</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">public_key</span> <span class="o">=</span> <span class="s1">&#39;PUBLIC&#39;</span>
+    <span class="n">private_key</span> <span class="o">=</span> <span class="s1">&#39;PRIVATE&#39;</span>
+    <span class="n">format_</span> <span class="o">=</span> <span class="s2">&quot;application/stix&quot;</span>
+    <span class="n">content_binding</span> <span class="o">=</span> <span class="s2">&quot;urn:stix.mitre.org:xml:1.1.1&quot;</span>
+
+    <span class="c1"># create class instance</span>
+    <span class="n">api</span> <span class="o">=</span> <span class="n">APIRequestHandler</span><span class="p">()</span>
+
+    <span class="c1"># initialize class instance</span>
+    <span class="n">api</span><span class="o">.</span><span class="n">init</span><span class="p">(</span><span class="n">public_key</span><span class="o">=</span><span class="n">public_key</span><span class="p">,</span> <span class="n">private_key</span><span class="o">=</span><span class="n">private_key</span><span class="p">)</span>
+
+    <span class="c1"># Get IoCs for default time range</span>
+    <span class="n">j</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getIocs</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="n">report</span> <span class="ow">in</span> <span class="n">j</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">]:</span>
+        <span class="n">timestamp</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">fromtimestamp</span><span class="p">(</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;publishDate&#39;</span><span class="p">],</span> <span class="n">tz</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span>
+
+        <span class="c1"># Get detailed IoC reports in STIX format</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">getReport</span><span class="p">(</span><span class="n">reportId</span><span class="o">=</span><span class="n">report</span><span class="p">[</span><span class="s1">&#39;reportId&#39;</span><span class="p">],</span> <span class="n">accept_header</span><span class="o">=</span><span class="n">format_</span><span class="p">)</span>
+
+        <span class="c1"># Send to TAXII server</span>
+        <span class="n">stix</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">taxiiPush</span><span class="p">(</span>
+            <span class="n">username</span><span class="o">=</span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+            <span class="n">password</span><span class="o">=</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span>
+            <span class="n">content</span><span class="o">=</span><span class="n">r</span><span class="p">,</span>
+            <span class="n">content_binding</span><span class="o">=</span><span class="n">content_binding</span><span class="p">,</span>
+            <span class="n">collection_names</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;mycollection&quot;</span><span class="p">],</span>
+            <span class="n">timestamp</span><span class="o">=</span><span class="n">timestamp</span><span class="p">,</span>
+            <span class="n">uri</span><span class="o">=</span><span class="s2">&quot;http://taxiistand.com/services/inbox&quot;</span>
+        <span class="p">)</span>
+        <span class="n">file_name</span> <span class="o">=</span> <span class="n">stix</span><span class="o">.</span><span class="n">id_</span>
+
+        <span class="nb">print</span><span class="p">(</span><span class="n">file_name</span> <span class="o">+</span> <span class="s2">&quot; uploaded to TAXII server&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        
+        &copy; Copyright 2020, arcsector
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
