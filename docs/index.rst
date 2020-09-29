@@ -70,7 +70,8 @@ Simply import the file, create a class instance, initialize it, and then you're 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
+   
+   endpoint_query
 
 Indices and tables
 ==================
