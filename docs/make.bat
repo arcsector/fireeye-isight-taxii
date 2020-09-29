@@ -10,8 +10,8 @@ if "%SPHINXBUILD%" == "" (
 set SOURCEDIR=.\
 set BUILDDIR=.\_build
 set HTMLDIR=.\_build\html
-set REMOTE=https://github.com/arcsector/fireeye-isight-taxii.git
-set REMOTELINK=ADDME
+set REMOTE=gh-pages-remote
+set REMOTELINK=https://github.com/arcsector/fireeye-isight-taxii.git
 
 if "%1" == "" goto help
 
