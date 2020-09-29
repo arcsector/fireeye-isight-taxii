@@ -7,7 +7,7 @@ This is an implementation of the FireEye iSight API connector with added TAXII c
 Install requirements with:
 
 ```bash
-python3 -m pip install cabby
+python3 -m pip install cabby stix
 
 ### OR ###
 

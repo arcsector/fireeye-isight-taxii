@@ -3,6 +3,10 @@
 *.txt
 __pycache__/*
 .vscode/*
+docs/_build/*
 
 !endpoint_query.py
 !requirements.txt
+!docs/_static/
+!docs/_templates/
+!docs/*.py

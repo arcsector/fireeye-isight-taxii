@@ -104,7 +104,7 @@ class APIRequestHandler(object):
         r = self.session.get(self.URL + ENDPOINT)
 
         return self.returnHelper(r)
-    
+
     def getReport(self, reportId: str, accept_header: str = "application/stix"):
         """Gets report endpoint for IoCs
 
