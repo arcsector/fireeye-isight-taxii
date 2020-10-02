@@ -13,16 +13,33 @@ from io import BytesIO, StringIO
 from cabby import create_client
 
 class APIRequestHandler(object):
-    """Standard class to call FireEye REST API"""
+    """Standard class to call FireEye REST API
+    
+    :var str URL: initial value: 'https://api.isightpartners.com'
+    :var str public_key: initial value: ''
+    :var str private_key: initial value: ''
+    :var str accept_version: initial value: '2.5'
+    :var logging.Logger logger: initial value: ``logging.Logger``
+    :var requests.Session session: initial value: ``requests.Session()``
+    """
 
     def __init__(self):
-        self.URL = 'https://api.isightpartners.com'
-        self.public_key = ''
-        self.private_key = ''
-        self.accept_version = '2.5'
-        self.logger: logging.Logger = logging.getLogger(__name__)
-        self.logger.setLevel(logging.INFO)
+        self.URL: str = 'https://api.isightpartners.com'
+        self.public_key: str = ''
+        self.private_key: str = ''
+        self.accept_version: str = '2.5'
         self.session: requests.Session = requests.Session()
+        logger: logging.Logger = logging.getLogger(__name__)
+        log_level: int = logging.INFO
+        logger.setLevel(log_level)
+        handler = logging.StreamHandler()
+        handler.setLevel(log_level)
+        if logger.handlers:
+            logger.handlers = []
+        formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        handler.setFormatter(formatter)
+        logger.addHandler(handler)
+        self.logger = logger
     
     def init(self, URL: str = None, public_key: str = None, private_key: str = None, accept_version: str = None, logger: logging.Logger = None, session: requests.Session = None):
         """Initializes class with optional attributes
