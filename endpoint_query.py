@@ -67,13 +67,15 @@ class APIRequestHandler(object):
         # create timestamp for headers
         time_stamp = email.utils.formatdate(localtime=True)
         new_data = endpoint + self.accept_version + accept + time_stamp
-        self.logger.debug(new_data)
+        self.logger.debug("message=\"Header info\", endpoint=\"{}\", accept=\"{}\", timestamp=\"{}\", accept_version=\"{}\"".format(
+            endpoint, accept, timestamp, self.accept_version
+        ))
 
         # create hash for headers
         key = bytearray()
         key.extend(map(ord, self.private_key))
         hashed = hmac.new(key, new_data.encode('utf-8'), hashlib.sha256)
-        self.logger.debug(hashed)
+        self.logger.debug("message=\"Hash header for request\", hash=\"" + hashed + "\"")
 
         # set header info
         headers = {
@@ -91,11 +93,11 @@ class APIRequestHandler(object):
             try:
                 return_json = response.json()
             except:
-                self.logger.error(response.content)
+                self.logger.error("message=\"" + str(response.content) + "\"")
                 return response
             return return_json
         else:
-            self.logger.error(response.content)
+            self.logger.error("message=\"" + str(response.content) + "\"")
             return response
 
     def getIocs(self, startDate: datetime = datetime.now() - timedelta(days=7), endDate: datetime = datetime.now(), accept_header: str = 'application/json'):
@@ -115,7 +117,7 @@ class APIRequestHandler(object):
 
         # get header info for future requests
         self.prepare_headers(ENDPOINT, accept_header)
-        self.logger.info( datetime.now().strftime("%d-%m-%Y, %H:%M:%S") + " - Executing request startDate= "+str(startDate) + "&endDate= "+str(endDate) + "\n")
+        self.logger.info("message=\"Executing request\", startDate=\""+str(startDate) + "\", endDate=\"" + str(endDate) + "\", endpoint=\"" + ENDPOINT + "\"")
 
         # execute request
         r = self.session.get(self.URL + ENDPOINT)
@@ -132,7 +134,7 @@ class APIRequestHandler(object):
         :rtype: ``requests.Response``
         """
         ENDPOINT = "/report/" + reportId
-        self.logger.info("Getting endpoint " + ENDPOINT)
+        self.logger.info("message=\"Getting endpoint " + ENDPOINT + "\"")
         self.prepare_headers(ENDPOINT, accept_header)
         r = self.session.get(self.URL + ENDPOINT)
 
@@ -208,15 +210,15 @@ class APIRequestHandler(object):
         client = create_client()
         content = kwargs.get("content")
         if 'username' in kwargs:
-            self.logger.debug("Using basic auth")
+            self.logger.debug("message=\"Using basic auth\"")
             client.set_auth(username=kwargs.get("username"), password=kwargs.get("password"), jwt_auth_url=kwargs.get("jwt_auth_url"), verify_ssl=kwargs.get("verify_ssl"))
         elif 'cert_file' in kwargs:
-            self.logger.debug("Using cert auth")
+            self.logger.debug("message=\"Using cert auth\"")
             client.set_auth(ca_cert=kwargs.get("ca_cert"), cert_file=kwargs.get("cert_file"), key_file=kwargs.get("key_file"), key_password=kwargs.get("key_password"), verify_ssl=kwargs.get("verify_ssl"))
         content_io = StringIO(content)
         stix = STIXPackage().from_xml(content_io)
         file_name = stix.id_
-        self.logger.info("Pushing STIX " + file_name)
+        self.logger.info("message=\"Pushing STIX " + file_name + "\"")
         client.push(
             content=content, 
             content_binding=kwargs.get("content_binding"),
