@@ -35,7 +35,8 @@
 
     
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to FireEye iSight TAXII Connector’s documentation!" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -80,11 +81,11 @@
               
             
             
-              <!-- Local TOC -->
-              <div class="local-toc"><ul>
-<li><a class="reference internal" href="#">API Documentation</a></li>
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Documentation</a></li>
 </ul>
-</div>
+
             
           
         </div>
@@ -155,9 +156,21 @@
 <em class="property">class </em><code class="sig-prename descclassname">endpoint_query.</code><code class="sig-name descname">APIRequestHandler</code><a class="headerlink" href="#endpoint_query.APIRequestHandler" title="Permalink to this definition">¶</a></dt>
 <dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
 <p>Standard class to call FireEye REST API</p>
+<dl class="field-list simple">
+<dt class="field-odd">Variables</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>URL</strong> (<em>str</em>) – initial value: ‘<a class="reference external" href="https://api.isightpartners.com">https://api.isightpartners.com</a>’</p></li>
+<li><p><strong>public_key</strong> (<em>str</em>) – initial value: ‘’</p></li>
+<li><p><strong>private_key</strong> (<em>str</em>) – initial value: ‘’</p></li>
+<li><p><strong>accept_version</strong> (<em>str</em>) – initial value: ‘2.5’</p></li>
+<li><p><strong>logger</strong> (<em>logging.Logger</em>) – initial value: <code class="docutils literal notranslate"><span class="pre">logging.Logger</span></code></p></li>
+<li><p><strong>session</strong> (<em>requests.Session</em>) – initial value: <code class="docutils literal notranslate"><span class="pre">requests.Session()</span></code></p></li>
+</ul>
+</dd>
+</dl>
 <dl class="py method">
 <dt id="endpoint_query.APIRequestHandler.getIocs">
-<code class="sig-name descname">getIocs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">startDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 9, 21, 17, 46, 16, 492067)</span></em>, <em class="sig-param"><span class="n">endDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 9, 28, 17, 46, 16, 492067)</span></em>, <em class="sig-param"><span class="n">accept_header</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'application/json'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.getIocs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">getIocs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">startDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 9, 25, 1, 32, 8, 871206)</span></em>, <em class="sig-param"><span class="n">endDate</span><span class="p">:</span> <span class="n">datetime.datetime</span> <span class="o">=</span> <span class="default_value">datetime.datetime(2020, 10, 2, 1, 32, 8, 871206)</span></em>, <em class="sig-param"><span class="n">accept_header</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'application/json'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#endpoint_query.APIRequestHandler.getIocs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Gets IoCs in a timerange from FireEye iSight API</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -316,6 +329,13 @@ set to filepath to check against custom CA bundle.</p></li>
            
           </div>
           <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to FireEye iSight TAXII Connector’s documentation!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
   
 
   <hr/>
