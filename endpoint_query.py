@@ -4,6 +4,7 @@ import hmac
 import email
 import time
 import json
+from typing import Optional
 import requests
 import logging
 from datetime import datetime, timedelta, timezone
@@ -41,7 +42,7 @@ class APIRequestHandler(object):
         logger.addHandler(handler)
         self.logger = logger
     
-    def init(self, URL: str = None, public_key: str = None, private_key: str = None, accept_version: str = None, logger: logging.Logger = None, session: requests.Session = None):
+    def init(self, URL: str = "https://api.isightpartners.com", public_key: Optional[str] = None, private_key: Optional[str] = None, accept_version: str = '2.5', logger: Optional[logging.Logger] = None, session: requests.Session = requests.Session()):
         """Initializes class with optional attributes
 
         :param str URL: URL for FireEye iSight. Defaults to 'https://api.isightpartners.com'
@@ -54,9 +55,9 @@ class APIRequestHandler(object):
         self.URL = URL if URL != None else 'https://api.isightpartners.com'
         self.public_key = public_key if public_key != None else ''
         self.private_key = private_key if private_key != None else ''
-        self.accept_version = accept_version if accept_version != None else '2.5'
+        self.accept_version = accept_version
         self.logger = logger if logger != None else self.logger
-        self.session = session if session != None else requests.Session()
+        self.session = session
 
     def prepare_headers(self, endpoint: str, accept: str):
         """Attaches headers to handler session
@@ -68,14 +69,14 @@ class APIRequestHandler(object):
         time_stamp = email.utils.formatdate(localtime=True)
         new_data = endpoint + self.accept_version + accept + time_stamp
         self.logger.debug("message=\"Header info\", endpoint=\"{}\", accept=\"{}\", timestamp=\"{}\", accept_version=\"{}\"".format(
-            endpoint, accept, timestamp, self.accept_version
+            endpoint, accept, time_stamp, self.accept_version
         ))
 
         # create hash for headers
         key = bytearray()
         key.extend(map(ord, self.private_key))
         hashed = hmac.new(key, new_data.encode('utf-8'), hashlib.sha256)
-        self.logger.debug("message=\"Hash header for request\", hash=\"" + hashed + "\"")
+        self.logger.debug("message=\"Hash header for request\", hash=\"" + str(hashed.hexdigest()) + "\"")
 
         # set header info
         headers = {
@@ -111,8 +112,8 @@ class APIRequestHandler(object):
         :rtype: dict OR :class:`request.Response`
         """
         # format endpoint
-        startDate = int((startDate - datetime(1970,1,1)).total_seconds())
-        endDate  = int((endDate - datetime(1970,1,1)).total_seconds())
+        startDate = int((startDate - datetime(1970,1,1)).total_seconds())  # type: ignore
+        endDate  = int((endDate - datetime(1970,1,1)).total_seconds())  # type: ignore
         ENDPOINT = '/view/iocs?startDate='+str(startDate)+'&endDate='+str(endDate)
 
         # get header info for future requests
