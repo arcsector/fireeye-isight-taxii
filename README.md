@@ -57,3 +57,5 @@ if __name__ == '__main__':
 
         print(file_name + " uploaded to TAXII server")
 ```
+
+For more info, please see [the Documentation](https://arcsector.github.io/fireeye-isight-taxii/).
